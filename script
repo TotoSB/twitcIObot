@@ -1,0 +1,69 @@
+from twitchio.ext import commands
+
+bot_name = 'BOT_NAME'
+bot = commands.Bot(
+    irc_token='....',
+    client_id='....',
+    nick=bot_name,
+    prefix='!',
+    initial_channels=['fintyer']
+)
+
+
+@bot.event
+async def event_message(ctx):
+
+    if ctx.author.name.lower() == bot_name:
+        return
+
+    await bot.handle_commands(ctx)
+
+    if ctx.content == 'hola':
+        await ctx.channel.send(f'Hola @{ctx.author.name} bienvenido al stream :D ')
+
+@bot.command(name="test")
+async def test(ctx):
+    await ctx.send("Funciona :D")
+
+@bot.command(name="edad")
+async def test(ctx):
+    await ctx.send("14 años")
+
+@bot.command(name="pc")
+async def test(ctx):
+    await ctx.send("Ryzen 5 2600 || 1050 4GB || 2x8gb ram || 240GB solido")
+
+@bot.command(name="reglas")
+async def test(ctx):
+    await ctx.send("-Ser de boca-No insultar a ninguno del chat por que seras baneado temporalmente-Pasarla bien y cagarse de risa :)")
+
+@bot.command(name="trovo")
+async def test(ctx):
+    await ctx.send("si se tiran un follow se agradece https://trovo.live/Fintyer")
+
+@bot.command(name="teclado")
+async def test(ctx):
+    await ctx.send("kumara k552")
+
+@bot.command(name="mouse")
+async def test(ctx):
+    await ctx.send("Logitech G Pro")
+
+@bot.command(name="res")
+async def test(ctx):
+    await ctx.send("1920x1080")
+
+@bot.command(name="twitter")
+async def test(ctx):
+    await ctx.send("https://twitter.com/fintyer")
+
+@bot.command(name="chau")
+async def test(ctx):
+    await ctx.send("Chau bro :D")
+
+@bot.command(name="host")
+async def test(ctx):
+    await ctx.send("si vas a tu canal y pones en el chat /host fintyer me ayudas saliendo en recomendados BloodTrail	")
+
+if __name__ == '__main__':
+    bot.run()
